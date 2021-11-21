@@ -5,7 +5,7 @@ using namespace std;
 class complex  //complex number
 {
 private:
-    int a, b;
+    int a, b;   // a+bi
 public:
     complex (int x, int y)
     {
@@ -36,7 +36,7 @@ public:
 
     void show_data()
     {
-        if (b>=0)
+        if (b>=0 || a>=0)
         {
             cout << "= " << a << "+" << b << "i" << endl;
         }
@@ -57,8 +57,8 @@ public:
             c1 = c1 - c2;
             break;
 
-        case '=': c1 = (op == '+') ? (c1 = c1 + c2) : (c1 = c1 - c2);
-            break;
+        /*case '=': c1 = (********) ? (c1 = c1 + c2) : (c1 = c1 - c2);
+            break;*/
 
         default:
             c1 = c2;
@@ -71,12 +71,12 @@ public:
 int main(int argc, char const* argv[])
 {
     int n; char op='+';
+    complex c1(0, 0);
     do
     {
-    complex c1(0, 0);
     cout << "How many complex numbers you want to calculate:  ";
     cin >> n;
-    complex* p = new complex[n];  //dynamic nemory allocation
+    complex* p = new complex[n];  //dynamic memory allocation
 
     for (int i = 0; i < n; i++)
     {
@@ -92,8 +92,9 @@ int main(int argc, char const* argv[])
 
     delete [] p;
     p = NULL;
-    } while (op !='n');
-    //_getch();
+ 
+    } while (op !='n'); //op== 'y'
+    
     return 0;
 }
 
